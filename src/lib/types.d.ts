@@ -1,133 +1,188 @@
+/**
+ * The predefined categories of cookie choices that can be offered to users.
+ */
 export type SuggestedChoices = 'necessary' | 'tracking' | 'analytics' | 'marketing';
+
+/**
+ * A map of cookie choice keys to their configuration objects.
+ * You can use the predefined `SuggestedChoices` or define your own custom keys.
+ */
 export type Choices = Record<
 	SuggestedChoices | string,
 	{
 		/**
-		 * The name of the option that the user will see.
+		 * The display name of the option shown to the user.
 		 */
 		label: string;
 
 		/**
-		 * The description of the option that the user will see.
-		 * You can use HTML
+		 * A description of the option, shown to the user.
+		 * HTML is supported.
 		 */
 		description: string;
 
 		/**
-		 * If set to true the user won't be able to reject this option.
+		 * If true, this option cannot be declined by the user.
 		 */
 		mandatory?: boolean;
+
 		/**
-		 * The default value if the user doesn't specify their choice.
-		 * Will contain the actual value of the cookie
+		 * The default selection state of this option.
+		 * If not provided, it will be considered unselected by default.
 		 */
 		value?: boolean;
 
 		/**
-		 * Callback function to pass when the cookie is accepted.
+		 * Callback function executed when the user accepts this option.
+		 * Can be asynchronous.
 		 */
 		onAccepted?: () => void | Promise<void>;
 
 		/**
-		 * Callback function to pass when the cookie is rejected.
+		 * Callback function executed when the user rejects this option.
+		 * Can be asynchronous.
 		 */
 		onRejected?: () => void | Promise<void>;
 	}
 >;
 
+/**
+ * Configuration options for setting a cookie.
+ */
 export type CookieConfig = {
+	/**
+	 * The name of the cookie.
+	 */
 	name: string;
+
+	/**
+	 * The path attribute of the cookie.
+	 */
 	path: string;
+
+	/**
+	 * The domain attribute of the cookie.
+	 */
 	domain?: string;
+
+	/**
+	 * The expiration date of the cookie.
+	 * Can be specified as a number (in days) or a specific Date.
+	 */
 	expiration?: number | Date;
+
+	/**
+	 * If true, the cookie will only be transmitted over secure protocols (HTTPS).
+	 */
 	secure?: boolean;
+
+	/**
+	 * The SameSite attribute to control cross-site request behavior.
+	 */
 	sameSite?: 'strict' | 'lax' | 'none';
 };
 
+/**
+ * Configuration for fingerprinting-based tracking.
+ */
 export type FingerprintingConfig = {
 	/**
-	 * A Unique User ID used for server-side tracking.
-	 * If not provided a random one will be generated
+	 * A unique user identifier used for server-side tracking.
+	 * If not provided, a random UUID will be generated.
 	 */
 	uuid?: string;
 
 	/**
-	 * The cookie configuration.
-	 * If provided a new cookie will be created.
+	 * Configuration for the cookie that stores the UUID.
+	 * If provided, the cookie will be created.
+	 * If not provided, it will be stored inside the other cookie.
 	 */
 	cookie?: CookieConfig;
 };
 
+/**
+ * Main configuration props for the cookie consent popup/banner.
+ */
 export type Props = {
 	/**
-	 * Whether the banner is displayed or not to the user.
-	 * Useful, for example, if you're in an iframe and there is no room to show the banner.
-	 * If set to false all the default values will be used.
+	 * Whether the banner is visible to the user.
+	 * If false, default cookie values will be applied automatically.
 	 */
 	visible?: boolean;
 
 	/**
-	 * The cookie configuration.
+	 * Global cookie configuration.
 	 */
 	cookie?: CookieConfig;
 
 	/**
-	 * The title of the popup
+	 * The title displayed on the cookie consent popup.
 	 */
 	heading?: string;
 
 	/**
-	 * The description of the popup
+	 * A description shown in the popup.
 	 */
 	description?: string;
 
 	/**
-	 * The label to accept all the cookies.
-	 * Set this to false if you don't want the user to see it.
+	 * Label for the "Accept All" button.
+	 * Set to `false` to hide this button.
 	 */
 	acceptAllLabel?: string | false;
 
 	/**
-	 * The label to reject all the cookies.
-	 * Set this to false if you don't want the user to see it.
+	 * Label for the "Reject All" button.
+	 * Set to `false` to hide this button.
 	 */
 	rejectAllLabel?: string | false;
 
 	/**
-	 * The label to customize the choices.
-	 * Set this to false if you don't want the user to see it.
+	 * Configuration for the "Customize" option in the banner.
+	 * Set to `false` to hide this section.
 	 */
 	customize?:
 		| {
+				/**
+				 * Label for the "Customize" button.
+				 */
 				label: string;
+
+				/**
+				 * Label shown on the choice selection screen.
+				 */
 				chooseLabel: string;
+
+				/**
+				 * Label for confirming selected cookie preferences.
+				 */
 				confirmLabel: string;
 		  }
 		| false;
 
 	/**
-	 * Whether the cookies are editable or not.
+	 * If true, users will be able to change their cookie choices after their initial selection.
 	 */
 	editable?: boolean;
 
 	/**
-	 * The cookie choices given to the user.
+	 * A set of cookie choices that the user can accept or reject.
 	 */
 	choices?: Choices;
 
 	/**
-	 * Enable fingerprinting.
-	 * I
+	 * Enables fingerprinting.
+	 * Can be a boolean or detailed configuration.
 	 */
 	fingerprinting?: boolean | FingerprintingConfig;
 
 	/**
-	 * The background color.
+	 * Background color of the banner (e.g., "#ffffff").
 	 */
 	bgColor?: string;
 
 	/**
-	 * The foreground color.
+	 * Foreground (text) color of the banner (e.g., "#000000").
 	 */
 	fgColor?: string;
 };
