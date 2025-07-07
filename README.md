@@ -38,7 +38,7 @@ npm install -D svelte-cookie-banner
 
 ```svelte
 <script>
-   import CookieBanner from 'svelte-cookie-banner';
+   import { CookieBanner } from 'svelte-cookie-banner';
 </script>
 
 <CookieBanner heading="foo" description="bar" />
