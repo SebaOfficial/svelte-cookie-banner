@@ -62,6 +62,10 @@
 	let showCustomize = $state(false);
 	let escapeAction: 'close' | 'banner' = $state('banner');
 
+	// TODO: TBR
+	showBanner = false;
+	showCustomize = true;
+
 	const saveChoices = () => {
 		let data: { [k: string]: boolean | string } = Object.fromEntries(
 			Object.entries(choices).map(([key, choice]) => [key, Boolean(choice.value)]),
@@ -203,7 +207,7 @@
 				<form>
 					<h4>{customize.chooseLabel}</h4>
 					{#each Object.entries(choices) as [key, choice] (key)}
-						<div>
+						<div class="choice">
 							<input
 								type="checkbox"
 								id={toHtmlId(choice.label)}
@@ -256,6 +260,7 @@
 		position: fixed;
 		bottom: 1vh;
 		right: 1vw;
+		margin-left: 1vw;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
@@ -275,6 +280,15 @@
 			display: flex;
 			justify-content: flex-end;
 			gap: 15px;
+
+			@media (max-width: 600px) {
+				flex-direction: column;
+				align-items: center;
+
+				button {
+					width: 100%;
+				}
+			}
 		}
 	}
 
@@ -284,6 +298,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		width: min(1000px, 80vw);
 		background-color: var(--bg-color);
 		color: var(--fg-color);
 		padding: 30px;
@@ -316,19 +331,24 @@
 				margin: 16px 0 10px;
 			}
 
-			input[type='checkbox'] {
-				margin-right: 8px;
-				transform: scale(1.1);
-			}
+			.choice {
+				display: flex;
+				align-items: flex-start;
+				gap: 0.5rem;
 
-			label {
-				display: inline-block;
-				font-size: 14px;
-				margin-bottom: 10px;
-				line-height: 1.4;
+				input[type='checkbox'] {
+					transform: scale(1.1);
+				}
 
-				strong {
-					font-weight: 600;
+				label {
+					display: inline-block;
+					font-size: 14px;
+					margin-bottom: 10px;
+					line-height: 1.4;
+
+					strong {
+						font-weight: 600;
+					}
 				}
 			}
 
