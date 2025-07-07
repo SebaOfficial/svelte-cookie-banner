@@ -187,4 +187,9 @@ export type Props = {
 	 * Foreground (text) color of the banner (e.g., "#000000").
 	 */
 	fgColor?: string;
+
+	/**
+	 * The popup absolute position.
+	 */
+	position: 'right' | 'left';
 };

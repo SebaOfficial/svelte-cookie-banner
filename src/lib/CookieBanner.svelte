@@ -56,6 +56,7 @@
 		fingerprinting = true,
 		bgColor = 'black',
 		fgColor = 'white',
+		position = 'right',
 	}: Props = $props();
 
 	let showBanner = $state(false);
@@ -171,7 +172,7 @@
 		style="--bg-color: {bgColor}; --fg-color: {fgColor}"
 	>
 		{#if !showCustomize}
-			<div class="banner">
+			<div class="banner" class:right={position === 'right'} class:left={position === 'left'}>
 				<div>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<h3 id="cookie-banner-title">{@html heading}</h3>
@@ -224,7 +225,12 @@
 		{/if}
 	</div>
 {:else if editable}
-	<button class="edit" onclick={editCookies}>
+	<button
+		class="edit"
+		onclick={editCookies}
+		class:right={position === 'right'}
+		class:left={position === 'left'}
+	>
 		<img src={Cookie} alt="Edit Cookies" width="50px" height="50px" />
 	</button>
 {/if}
@@ -256,8 +262,6 @@
 		z-index: 9999;
 		position: fixed;
 		bottom: 1vh;
-		right: 1vw;
-		margin-left: 1vw;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
@@ -266,6 +270,16 @@
 		color: var(--fg-color);
 		padding: 20px;
 		border-radius: 10px;
+
+		&.right {
+			right: 1vw;
+			margin-left: 1vw;
+		}
+
+		&.left {
+			left: 1vw;
+			margin-right: 1vw;
+		}
 
 		h3 {
 			font-size: larger;
@@ -397,10 +411,19 @@
 		position: fixed;
 		z-index: 9999;
 		bottom: 10px;
-		right: 10px;
 		background-color: inherit;
 		border: none;
 		color: blue;
+
+		&.right {
+			right: 1vw;
+			margin-left: 1vw;
+		}
+
+		&.left {
+			left: 1vw;
+			margin-right: 1vw;
+		}
 
 		img {
 			width: 50px;
