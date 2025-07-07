@@ -1,3 +1,9 @@
+<svelte:options
+	customElement={{
+		tag: 'cookie-banner'
+	}}
+/>
+
 <script lang="ts">
 	import cookies from 'js-cookie';
 	import { v4 as uuid } from 'uuid';
@@ -124,6 +130,8 @@
 	};
 
 	onMount(() => {
+		if(!visible) return void(saveChoices());
+
 		let data = cookies.get(cookie.name);
 		if (!data) return void (showBanner = true);
 
@@ -154,12 +162,6 @@
 			.replace(/\s+/g, '-')
 			.replace(/-+/g, '-');
 </script>
-
-<svelte:options
-	customElement={{
-		tag: "cookie-banner"
-	}}
-/>
 
 {#if showBanner && visible}
 	<div
