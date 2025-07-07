@@ -117,11 +117,13 @@ export type Props = {
 
 	/**
 	 * The title displayed on the cookie consent popup.
+	 * You can use HTML.
 	 */
 	heading?: string;
 
 	/**
 	 * A description shown in the popup.
+	 * You can use HTML.
 	 */
 	description?: string;
 

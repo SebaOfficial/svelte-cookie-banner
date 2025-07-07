@@ -173,7 +173,8 @@
 		{#if !showCustomize}
 			<div class="banner">
 				<div>
-					<h3 id="cookie-banner-title">{heading}</h3>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					<h3 id="cookie-banner-title">{@html heading}</h3>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<p id="cookie-banner-description">{@html description}</p>
 				</div>
@@ -193,7 +194,8 @@
 		{:else if customize}
 			<div class="customize">
 				<div>
-					<h3 id="cookie-banner-title">{heading}</h3>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					<h3 id="cookie-banner-title">{@html heading}</h3>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<p id="cookie-banner-description">{@html description}</p>
 				</div>
