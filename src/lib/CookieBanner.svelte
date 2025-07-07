@@ -155,6 +155,12 @@
 			.replace(/-+/g, '-');
 </script>
 
+<svelte:options
+	customElement={{
+		tag: "cookie-banner"
+	}}
+/>
+
 {#if showBanner && visible}
 	<div
 		role="dialog"
