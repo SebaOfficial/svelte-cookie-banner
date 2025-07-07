@@ -67,7 +67,7 @@
 			Object.entries(choices).map(([key, choice]) => [key, Boolean(choice.value)]),
 		);
 
-		if (fingerprinting) {
+		if (fingerprinting && (data.tracking || data.analytics)) {
 			const fp =
 				JSON.parse(cookies.get(cookie.name) ?? '{}').fingerprint ??
 				(fingerprinting === true ? uuid() : fingerprinting.uuid);
