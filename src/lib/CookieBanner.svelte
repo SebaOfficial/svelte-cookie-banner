@@ -62,10 +62,6 @@
 	let showCustomize = $state(false);
 	let escapeAction: 'close' | 'banner' = $state('banner');
 
-	// TODO: TBR
-	showBanner = false;
-	showCustomize = true;
-
 	const saveChoices = () => {
 		let data: { [k: string]: boolean | string } = Object.fromEntries(
 			Object.entries(choices).map(([key, choice]) => [key, Boolean(choice.value)]),
@@ -200,6 +196,7 @@
 				<div>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<h3 id="cookie-banner-title">{@html heading}</h3>
+					<button onclick={closeCustomize} class="close">&#x2715;</button>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<p id="cookie-banner-description">{@html description}</p>
 				</div>
@@ -311,11 +308,24 @@
 			box-sizing: border-box;
 			margin: 0;
 			padding: 0;
+			position: relative;
 
 			h3 {
 				font-size: 18px;
 				font-weight: bold;
 				margin-bottom: 10px;
+			}
+
+			button {
+				position: absolute;
+				right: 10px;
+				top: -10px;
+				font-size: large;
+				font-weight: bolder;
+				cursor: pointer;
+				background-color: inherit;
+				color: inherit;
+				border: none;
 			}
 
 			p {
@@ -360,7 +370,7 @@
 		}
 	}
 
-	button:not(.edit) {
+	button:not(.edit, .close) {
 		cursor: pointer;
 		padding: 10px;
 		border: 2px solid white;
