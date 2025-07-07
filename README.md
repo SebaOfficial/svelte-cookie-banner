@@ -46,7 +46,7 @@ npm install -D svelte-cookie-banner
 ### HTML / Web Components
 
 ```html
-<cookie-consent-banner heading="foo" description="bar"></cookie-consent-banner>
+<cookie-banner heading="foo" description="bar"></cookie-banner>
 ```
 
 ## Fingerprinting
