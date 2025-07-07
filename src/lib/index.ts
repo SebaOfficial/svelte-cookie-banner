@@ -6,5 +6,5 @@ export {
 	type SuggestedChoices,
 	type Choices,
 	type CookieConfig,
-	type FingerprintingConfig
+	type FingerprintingConfig,
 };

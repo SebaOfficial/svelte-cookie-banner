@@ -11,7 +11,5 @@ export default defineConfig({
 		},
 		outDir: 'dist-js',
 	},
-	plugins: [
-		svelte(),
-	],
+	plugins: [svelte()],
 });

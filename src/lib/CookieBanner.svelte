@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'cookie-banner'
+		tag: 'cookie-banner',
 	}}
 />
 
@@ -18,7 +18,7 @@
 			name: 'gdpr-cookie',
 			path: '/',
 			secure: true,
-			sameSite: 'strict'
+			sameSite: 'strict',
 		},
 		heading = 'GDPR Notice',
 		description = 'We use cookies to offer a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. By clicking accept, you consent to our privacy policy & use of cookies.',
@@ -27,7 +27,7 @@
 		customize = {
 			label: 'Customize',
 			chooseLabel: 'Choose Wich Cookies To Enable',
-			confirmLabel: 'Confirm My Choices'
+			confirmLabel: 'Confirm My Choices',
 		},
 		editable = true,
 		choices = $bindable({
@@ -35,27 +35,27 @@
 				label: 'Necessary cookies',
 				description: "Used for cookie control. Can't be turned off.",
 				value: true,
-				mandatory: true
+				mandatory: true,
 			},
 			tracking: {
 				label: 'Tracking cookies',
 				description: 'Used for advertising purposes.',
-				value: true
+				value: true,
 			},
 			analytics: {
 				label: 'Analytics cookies',
 				description: 'Used to control Analytics.',
-				value: true
+				value: true,
 			},
 			marketing: {
 				label: 'Marketing cookies',
 				description: 'Used for marketing data.',
-				value: true
-			}
+				value: true,
+			},
 		}),
 		fingerprinting = true,
 		bgColor = 'black',
-		fgColor = 'white'
+		fgColor = 'white',
 	}: Props = $props();
 
 	let showBanner = $state(false);
@@ -64,7 +64,7 @@
 
 	const saveChoices = () => {
 		let data: { [k: string]: boolean | string } = Object.fromEntries(
-			Object.entries(choices).map(([key, choice]) => [key, Boolean(choice.value)])
+			Object.entries(choices).map(([key, choice]) => [key, Boolean(choice.value)]),
 		);
 
 		if (fingerprinting) {
@@ -84,7 +84,7 @@
 		cookies.set(name, JSON.stringify(data), config);
 
 		Object.entries(choices).forEach(([_, choice]) =>
-			choice.value ? choice.onAccepted?.() : choice.onRejected?.()
+			choice.value ? choice.onAccepted?.() : choice.onRejected?.(),
 		);
 
 		escapeAction = 'close';
@@ -130,7 +130,7 @@
 	};
 
 	onMount(() => {
-		if(!visible) return void(saveChoices());
+		if (!visible) return void saveChoices();
 
 		let data = cookies.get(cookie.name);
 		if (!data) return void (showBanner = true);
