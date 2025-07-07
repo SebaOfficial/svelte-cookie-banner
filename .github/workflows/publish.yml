@@ -26,14 +26,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build preview
         env:
-          BASE_PATH: "/${{ github.event.repository.name }}"
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm build
 
       - name: Build Library
@@ -86,8 +86,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: "https://registry.npmjs.org/"
-          cache: "pnpm"
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
