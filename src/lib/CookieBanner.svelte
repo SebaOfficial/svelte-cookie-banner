@@ -222,7 +222,7 @@
 	</div>
 {:else if editable}
 	<button class="edit" onclick={editCookies}>
-		<img src={Cookie} alt="Edit Cookies" />
+		<img src={Cookie} alt="Edit Cookies" width="50px" height="50px" />
 	</button>
 {/if}
 
