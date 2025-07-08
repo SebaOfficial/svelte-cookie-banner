@@ -36,6 +36,9 @@ jobs:
           BASE_PATH: '/${{ github.event.repository.name }}/demo'
         run: pnpm build
 
+      - name: Add CNAME
+        run: echo "svelte-cookie-banner.js.org" >> CNAME
+
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
