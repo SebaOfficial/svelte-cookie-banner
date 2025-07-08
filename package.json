@@ -1,6 +1,6 @@
 {
 	"name": "svelte-cookie-banner",
-	"version": "1.3.1",
+	"version": "1.4.0",
 	"description": "A GDPR compliant cookie banner",
 	"license": "MIT",
 	"author": {
@@ -13,7 +13,9 @@
 	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "pnpm build:docs && pnpm build:demo && pnpm build:dist",
+		"build:demo": "vite build",
+		"build:docs": "typedoc",
 		"build:js": "vite -c vite.js.config.ts build && mv dist-js/* dist/ && rmdir dist-js",
 		"build:dist": "pnpm prepack && pnpm build:js",
 		"preview": "vite preview",
@@ -64,6 +66,7 @@
 		"sass": "^1.89.2",
 		"svelte": "^5.35.2",
 		"svelte-check": "^4.2.2",
+		"typedoc": "^0.28.7",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^8.35.1",
 		"vite": "^6.3.5"

@@ -6,7 +6,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'build/demo',
+			assets: 'build/demo',
+		}),
 		paths: {
 			base: process.env.BASE_PATH ?? '',
 		},

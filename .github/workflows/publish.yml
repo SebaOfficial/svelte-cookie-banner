@@ -31,13 +31,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build preview
+      - name: Build Project
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: '/${{ github.event.repository.name }}/demo'
         run: pnpm build
-
-      - name: Build Library
-        run: pnpm build:dist
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
