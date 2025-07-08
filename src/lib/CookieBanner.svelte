@@ -62,6 +62,7 @@
 	let showBanner = $state(false);
 	let showCustomize = $state(false);
 	let escapeAction: 'close' | 'banner' = $state('banner');
+	let customizeContainer: HTMLDivElement | undefined = $state();
 
 	const saveChoices = () => {
 		let data: { [k: string]: boolean | string } = Object.fromEntries(
@@ -130,10 +131,20 @@
 		showCustomizeBtn();
 	};
 
+	const handleLinkClick = () => {
+		closeCustomize();
+
+		customizeContainer?.querySelectorAll('a').forEach((link) => {
+			link.removeEventListener('click', handleLinkClick);
+		});
+	};
+
 	onMount(() => {
+		// If not visible, save default choices
 		if (!visible) return void saveChoices();
 
 		let data = cookies.get(cookie.name);
+		// If the cookie isn't present show the banner
 		if (!data) return void (showBanner = true);
 
 		const selectedCookies: { [k: string]: boolean | string } | undefined = JSON.parse(data);
@@ -146,7 +157,12 @@
 				void (value ? choice?.onAccepted?.() : choice?.onRejected?.());
 			}
 		});
-		escapeAction = 'close';
+	});
+
+	$effect(() => {
+		customizeContainer?.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', handleLinkClick);
+		});
 	});
 
 	const onKeydown = (e: KeyboardEvent) => {
@@ -193,7 +209,7 @@
 				</div>
 			</div>
 		{:else if customize}
-			<div class="customize">
+			<div class="customize" bind:this={customizeContainer}>
 				<div>
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<h3 id="cookie-banner-title">{@html heading}</h3>
@@ -413,7 +429,6 @@
 		bottom: 10px;
 		background-color: inherit;
 		border: none;
-		color: blue;
 
 		&.right {
 			right: 1vw;
