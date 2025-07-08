@@ -413,6 +413,7 @@
 			background-color: inherit;
 			color: inherit;
 			border: none;
+			font-size: 1.1em;
 		}
 
 		&:hover {
