@@ -1,7 +1,7 @@
 # Svelte Cookie Banner
 
-[![docs](https://img.shields.io/badge/DOCS-8A2BE)](https://sebaofficial.github.io/svelte-cookie-banner/)
-[![demo](https://img.shields.io/badge/DEMO-8A2BE2)](https://sebaofficial.github.io/svelte-cookie-banner/demo/)
+[![docs](https://img.shields.io/badge/DOCS-8A2BE)](https://svelte-cookie-banner.js.org/)
+[![demo](https://img.shields.io/badge/DEMO-8A2BE2)](https://svelte-cookie-banner.js.org/demo/)
 [![actions](https://github.com/SebaOfficial/svelte-cookie-banner/actions/workflows/publish.yml/badge.svg)](https://github.com/SebaOfficial/svelte-cookie-banner/actions/workflows/publish.yml) [![SvelteKit](https://img.shields.io/badge/svelte-kit-orange.svg)](https://kit.svelte.dev) [![Svelte v5](https://img.shields.io/badge/svelte-v5-blueviolet.svg)](https://svelte.dev)
 
 A production-ready GDPR compliant banner that allows developers to customize selections.

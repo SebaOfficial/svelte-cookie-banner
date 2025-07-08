@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Project
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}/demo'
+          BASE_PATH: '/demo'
         run: pnpm build
 
       - name: Add CNAME
