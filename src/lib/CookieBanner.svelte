@@ -157,6 +157,8 @@
 				void (value ? choice?.onAccepted?.() : choice?.onRejected?.());
 			}
 		});
+
+		escapeAction = 'close';
 	});
 
 	$effect(() => {

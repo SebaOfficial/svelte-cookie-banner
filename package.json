@@ -1,6 +1,6 @@
 {
 	"name": "svelte-cookie-banner",
-	"version": "1.4.5",
+	"version": "1.4.6",
 	"description": "A GDPR compliant cookie banner",
 	"license": "MIT",
 	"author": {
