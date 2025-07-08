@@ -35,6 +35,8 @@ npm install -D svelte-cookie-banner
 
 ## Usage
 
+Check out the [documentation](https://svelte-cookie-banner.js.org) for a list of the available props.
+
 ### Svelte / SvelteKit
 
 ```svelte
