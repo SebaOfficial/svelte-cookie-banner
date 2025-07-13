@@ -6,8 +6,8 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: resolve(__dirname, 'dist/index.js'),
-			name: 'CookieBanner',
-			fileName: 'cookie-banner',
+			name: 'CookieConsent',
+			fileName: 'cookie-consent',
 		},
 		outDir: 'dist-js',
 	},

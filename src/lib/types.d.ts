@@ -4,47 +4,49 @@
 export type SuggestedChoices = 'necessary' | 'tracking' | 'analytics' | 'marketing';
 
 /**
+ * A cookie choice given to the user
+ */
+export type Choice = {
+	/**
+	 * The display name of the option shown to the user.
+	 */
+	label: string;
+
+	/**
+	 * A description of the option, shown to the user.
+	 * HTML is supported.
+	 */
+	description: string;
+
+	/**
+	 * If true, this option cannot be declined by the user.
+	 */
+	mandatory?: boolean;
+
+	/**
+	 * The default selection state of this option.
+	 * If not provided, it will be considered unselected by default.
+	 */
+	value?: boolean;
+
+	/**
+	 * Callback function executed when the user accepts this option.
+	 * Can be asynchronous.
+	 */
+	onAccepted?: () => void | Promise<void>;
+
+	/**
+	 * Callback function executed when the user rejects this option.
+	 * Can be asynchronous.
+	 */
+	onRejected?: () => void | Promise<void>;
+};
+
+/**
  * A map of cookie choice keys to their configuration objects.
  * You can use the predefined `SuggestedChoices` or define your own custom keys.
  */
-export type Choices = Record<
-	SuggestedChoices | string,
-	{
-		/**
-		 * The display name of the option shown to the user.
-		 */
-		label: string;
-
-		/**
-		 * A description of the option, shown to the user.
-		 * HTML is supported.
-		 */
-		description: string;
-
-		/**
-		 * If true, this option cannot be declined by the user.
-		 */
-		mandatory?: boolean;
-
-		/**
-		 * The default selection state of this option.
-		 * If not provided, it will be considered unselected by default.
-		 */
-		value?: boolean;
-
-		/**
-		 * Callback function executed when the user accepts this option.
-		 * Can be asynchronous.
-		 */
-		onAccepted?: () => void | Promise<void>;
-
-		/**
-		 * Callback function executed when the user rejects this option.
-		 * Can be asynchronous.
-		 */
-		onRejected?: () => void | Promise<void>;
-	}
->;
+export type Choices = Record<SuggestedChoices | (string & {}), Choice>;
 
 /**
  * Configuration options for setting a cookie.
@@ -100,50 +102,36 @@ export type FingerprintingConfig = {
 	cookie?: CookieConfig;
 };
 
-/**
- * Main configuration props for the cookie consent popup/banner.
- */
-export type Props = {
+export type CookiePosition = 'left' | 'right';
+
+export type BaseProps = {
 	/**
-	 * Whether the banner is visible to the user.
-	 * If false, default cookie values will be applied automatically.
+	 * A map of cookie choices that the user can accept or reject.
 	 */
-	visible?: boolean;
+	choices: Choices;
 
 	/**
 	 * Global cookie configuration.
 	 */
-	cookie?: CookieConfig;
+	cookie: CookieConfig;
 
 	/**
 	 * The title displayed on the cookie consent popup.
 	 * You can use HTML.
 	 */
-	heading?: string;
+	heading: string;
 
 	/**
 	 * A description shown in the popup.
 	 * You can use HTML.
 	 */
-	description?: string;
-
-	/**
-	 * Label for the "Accept All" button.
-	 * Set to `false` to hide this button.
-	 */
-	acceptAllLabel?: string | false;
-
-	/**
-	 * Label for the "Reject All" button.
-	 * Set to `false` to hide this button.
-	 */
-	rejectAllLabel?: string | false;
+	description: string;
 
 	/**
 	 * Configuration for the "Customize" option in the banner.
 	 * Set to `false` to hide this section.
 	 */
-	customize?:
+	customize:
 		| {
 				/**
 				 * Label for the "Customize" button.
@@ -164,32 +152,49 @@ export type Props = {
 
 	/**
 	 * If true, users will be able to change their cookie choices after their initial selection.
+	 * @default true
 	 */
 	editable?: boolean;
 
 	/**
-	 * A set of cookie choices that the user can accept or reject.
-	 */
-	choices?: Choices;
-
-	/**
 	 * Enables fingerprinting.
 	 * Can be a boolean or detailed configuration.
+	 * @default false
 	 */
 	fingerprinting?: boolean | FingerprintingConfig;
 
 	/**
-	 * Background color of the banner (e.g., "#ffffff").
+	 * The popup absolute position.
+	 * @default "right"
+	 */
+	position?: CookiePosition;
+
+	/**
+	 * Background color of the banner.
+	 * @default "#000000"
 	 */
 	bgColor?: string;
 
 	/**
-	 * Foreground (text) color of the banner (e.g., "#000000").
+	 * Foreground (text) color of the banner.
+	 * @default "#ffffff"
 	 */
 	fgColor?: string;
+};
+
+/**
+ * Props common to every cookie consent.
+ */
+export type CommonProps = BaseProps & {
+	/**
+	 * Label for the "Accept All" button.
+	 * Set to `false` to hide this button.
+	 */
+	acceptAllLabel: string;
 
 	/**
-	 * The popup absolute position.
+	 * Label for the "Reject All" button.
+	 * Set to `false` to hide this button.
 	 */
-	position: 'right' | 'left';
+	rejectAllLabel: string | false;
 };

@@ -29,7 +29,7 @@ npm install -D svelte-cookie-consent
 ```html
 <script
    type="module"
-   src="https://unpkg.com/svelte-cookie-consent@latest/dist/cookie-banner.js"
+   src="https://unpkg.com/svelte-cookie-consent@latest/dist/cookie-box.js"
 ></script>
 ```
 

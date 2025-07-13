@@ -1,9 +1,17 @@
-import CookieBanner from './CookieBanner.svelte';
-import type { SuggestedChoices, Choices, CookieConfig, FingerprintingConfig } from './types.js';
+import CookieBox from './CookieBox.svelte';
+
+import type {
+	SuggestedChoices,
+	Choice,
+	Choices,
+	CookieConfig,
+	FingerprintingConfig,
+} from './types.js';
 
 export {
-	CookieBanner,
+	CookieBox,
 	type SuggestedChoices,
+	type Choice,
 	type Choices,
 	type CookieConfig,
 	type FingerprintingConfig,
