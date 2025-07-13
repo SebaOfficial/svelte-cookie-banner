@@ -1,8 +1,8 @@
 # Svelte Cookie Banner
 
-[![docs](https://img.shields.io/badge/DOCS-8A2BE)](https://svelte-cookie-banner.js.org/)
-[![demo](https://img.shields.io/badge/DEMO-8A2BE2)](https://svelte-cookie-banner.js.org/demo/)
-[![actions](https://github.com/SebaOfficial/svelte-cookie-banner/actions/workflows/publish.yml/badge.svg)](https://github.com/SebaOfficial/svelte-cookie-banner/actions/workflows/publish.yml) [![SvelteKit](https://img.shields.io/badge/svelte-kit-orange.svg)](https://kit.svelte.dev) [![Svelte v5](https://img.shields.io/badge/svelte-v5-blueviolet.svg)](https://svelte.dev)
+[![docs](https://img.shields.io/badge/DOCS-8A2BE)](https://cookie-consent.js.org/)
+[![demo](https://img.shields.io/badge/DEMO-8A2BE2)](https://cookie-consent.js.org/demo/)
+[![actions](https://github.com/SebaOfficial/svelte-cookie-consent/actions/workflows/publish.yml/badge.svg)](https://github.com/SebaOfficial/svelte-cookie-consent/actions/workflows/publish.yml) [![SvelteKit](https://img.shields.io/badge/svelte-kit-orange.svg)](https://kit.svelte.dev) [![Svelte v5](https://img.shields.io/badge/svelte-v5-blueviolet.svg)](https://svelte.dev)
 
 A production-ready GDPR compliant banner that allows developers to customize selections.
 
@@ -21,7 +21,7 @@ A production-ready GDPR compliant banner that allows developers to customize sel
 ### Via npm
 
 ```shell
-npm install -D svelte-cookie-banner
+npm install -D svelte-cookie-consent
 ```
 
 ### Via CDN
@@ -29,19 +29,19 @@ npm install -D svelte-cookie-banner
 ```html
 <script
    type="module"
-   src="https://unpkg.com/svelte-cookie-banner@latest/dist/cookie-banner.js"
+   src="https://unpkg.com/svelte-cookie-consent@latest/dist/cookie-banner.js"
 ></script>
 ```
 
 ## Usage
 
-Check out the [documentation](https://svelte-cookie-banner.js.org) for a list of the available props.
+Check out the [documentation](https://cookie-consent.js.org) for a list of the available props.
 
 ### Svelte / SvelteKit
 
 ```svelte
 <script>
-   import { CookieBanner } from 'svelte-cookie-banner';
+   import { CookieBanner } from 'svelte-cookie-consent';
 </script>
 
 <CookieBanner heading="foo" description="bar" />

@@ -1,6 +1,6 @@
 {
-	"name": "svelte-cookie-banner",
-	"version": "1.4.6",
+	"name": "svelte-cookie-consent",
+	"version": "2.0.0",
 	"description": "A GDPR compliant cookie banner",
 	"license": "MIT",
 	"author": {
@@ -9,9 +9,9 @@
 		"email": "sebastiano@racca.me"
 	},
 	"repository": {
-		"url": "git+https://github.com/SebaOfficial/svelte-cookie-banner.git"
+		"url": "git+https://github.com/SebaOfficial/svelte-cookie-consent.git"
 	},
-	"homepage": "https://svelte-cookie-banner.js.org/",
+	"homepage": "https://cookie-consent.js.org/",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "pnpm build:docs && pnpm build:demo && pnpm build:dist",
