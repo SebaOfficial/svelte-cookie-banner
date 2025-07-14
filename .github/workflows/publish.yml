@@ -37,7 +37,7 @@ jobs:
         run: pnpm build
 
       - name: Add CNAME
-        run: echo "cookie-banner.js.org" >> ./build/CNAME
+        run: echo "svelte-cookie-consent.js.org" >> ./build/CNAME
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
