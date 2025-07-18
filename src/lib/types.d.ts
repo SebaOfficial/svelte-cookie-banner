@@ -46,7 +46,7 @@ export type Choice = {
  * A map of cookie choice keys to their configuration objects.
  * You can use the predefined `SuggestedChoices` or define your own custom keys.
  */
-export type Choices = Record<SuggestedChoices | (string & {}), Choice>;
+export type Choices = Partial<Record<SuggestedChoices, Choice>> & Record<string, Choice>;
 
 /**
  * Configuration options for setting a cookie.
