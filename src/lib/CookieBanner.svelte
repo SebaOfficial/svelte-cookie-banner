@@ -43,21 +43,42 @@
 >
 	<div class="banner">
 		<div>
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<h3 id="cookie-consent-title">{@html heading}</h3>
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<p id="cookie-consent-description">{@html description}</p>
+			<h3 id="cookie-consent-title" style={typeof heading == 'object' ? heading.style : undefined}>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html typeof heading === 'string' ? heading : heading.text}
+			</h3>
+			<p
+				id="cookie-consent-description"
+				style={typeof description == 'object' ? description.style : undefined}
+			>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html typeof description === 'string' ? description : description.text}
+			</p>
 		</div>
 
 		<div class="actions">
 			{#if customize}
-				<button id="customize" bind:this={customizeBtn}>{customize.label}</button>
+				<button id="customize" style={customize.style} bind:this={customizeBtn}>
+					{customize.label}
+				</button>
 			{/if}
 			{#if rejectAllLabel}
-				<button id="reject" bind:this={rejectAllBtn}>{rejectAllLabel}</button>
+				<button
+					id="reject"
+					style={typeof rejectAllLabel === 'object' ? rejectAllLabel.style : undefined}
+					bind:this={rejectAllBtn}
+				>
+					{typeof rejectAllLabel == 'string' ? rejectAllLabel : rejectAllLabel.text}
+				</button>
 			{/if}
 			{#if acceptAllLabel}
-				<button id="accept" bind:this={acceptAllBtn}>{acceptAllLabel}</button>
+				<button
+					id="accept"
+					style={typeof acceptAllLabel === 'object' ? acceptAllLabel.style : undefined}
+					bind:this={acceptAllBtn}
+				>
+					{typeof acceptAllLabel == 'string' ? acceptAllLabel : acceptAllLabel.text}
+				</button>
 			{/if}
 		</div>
 	</div>

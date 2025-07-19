@@ -119,13 +119,37 @@ export type BaseProps = {
 	 * The title displayed on the cookie consent popup.
 	 * You can use HTML.
 	 */
-	heading: string;
+	heading:
+		| string
+		| {
+				/**
+				 * The title displayed on the cookie consent popup.
+				 * You can use HTML.
+				 */
+				text: string;
+				/**
+				 * Custom CSS styling
+				 */
+				style?: string;
+		  };
 
 	/**
 	 * A description shown in the popup.
 	 * You can use HTML.
 	 */
-	description: string;
+	description:
+		| string
+		| {
+				/**
+				 * The title displayed on the cookie consent popup.
+				 * You can use HTML.
+				 */
+				text: string;
+				/**
+				 * Custom CSS styling
+				 */
+				style?: string;
+		  };
 
 	/**
 	 * Configuration for the "Customize" option in the banner.
@@ -147,6 +171,11 @@ export type BaseProps = {
 				 * Label for confirming selected cookie preferences.
 				 */
 				confirmLabel: string;
+
+				/**
+				 * Custom CSS styling.
+				 */
+				style?: string;
 		  }
 		| false;
 
@@ -190,11 +219,37 @@ export type CommonProps = BaseProps & {
 	 * Label for the "Accept All" button.
 	 * Set to `false` to hide this button.
 	 */
-	acceptAllLabel: string;
+	acceptAllLabel:
+		| string
+		| false
+		| {
+				/**
+				 * The title displayed on the cookie consent popup.
+				 * You can use HTML.
+				 */
+				text: string;
+				/**
+				 * Custom CSS styling
+				 */
+				style?: string;
+		  };
 
 	/**
 	 * Label for the "Reject All" button.
 	 * Set to `false` to hide this button.
 	 */
-	rejectAllLabel: string | false;
+	rejectAllLabel:
+		| string
+		| false
+		| {
+				/**
+				 * The title displayed on the cookie consent popup.
+				 * You can use HTML.
+				 */
+				text: string;
+				/**
+				 * Custom CSS styling
+				 */
+				style?: string;
+		  };
 };
