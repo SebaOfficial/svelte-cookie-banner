@@ -35,6 +35,7 @@ export default class CookieCore {
 		Object.values(this.choices).forEach((choice) => {
 			choice.value = true;
 		});
+		this.save();
 	}
 
 	public rejectAll() {
